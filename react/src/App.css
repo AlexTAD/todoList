@@ -40,6 +40,8 @@ h1 {
 
 .todo-form {
   margin-bottom: 32px;
+  display: inline-flex;
+  justify-content: center;
 }
 
 .todo-input {
@@ -88,6 +90,10 @@ h1 {
     rgba(17, 122, 255, 1) 100%
   );
   padding: 16px 22px;
+}
+
+button {
+  cursor: pointer;
 }
 
 .todo-container {

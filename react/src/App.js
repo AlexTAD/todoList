@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import TodoLine from "./TodoLine";
 import { useState } from "react";
+import { RiAddCircleLine } from "react-icons/ri";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -14,8 +15,10 @@ function App() {
   };
 
   const addTodo = (todo) => {
-    const newTodos = [todo, ...todos];
-    setTodos(newTodos);
+    if (todo !== "") {
+      const newTodos = [todo, ...todos];
+      setTodos(newTodos);
+    }
   };
 
   const changeTodo = (todoId, newValue) => {
@@ -47,14 +50,28 @@ function App() {
   return (
     <div className="App">
       <h1>Todo de ses morts</h1>
-      <form className="todo-form" onSubmit={(e) => e.preventDefault()}>
+      <form
+        className="todo-form"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <input
+          id="mainInput"
           type="text"
           className="todo-input"
           onKeyDown={handleKeyDown}
           placeholder="Ajouter une tâche"
         ></input>
-        <button className="todo-button" onClick="">Ajouter</button>
+        <div className="todo-button">
+          <RiAddCircleLine
+            color={"white"}
+            size={25}
+            onClick={() => {
+              const mainInput = document.getElementById("mainInput");
+              addTodo(mainInput.value);
+              mainInput.value = "";
+            }}
+          />
+        </div>
       </form>
       <div>{renderTodos()}</div>
     </div>

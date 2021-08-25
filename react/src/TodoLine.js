@@ -10,9 +10,12 @@ function TodoLine({ id, value, changeToDo, deleteToDo }) {
         onChange={(e) => changeToDo(id, e.target.value)}
         value={value}
       ></input>
-      <RiCloseCircleLine className="deleteIcon" onClick={() => deleteToDo(id)}>
-        Supprimer
-      </RiCloseCircleLine>
+      <RiCloseCircleLine
+        size={25}
+        style={{ cursor: "pointer", display: "flex" }}
+        className="deleteIcon"
+        onClick={() => deleteToDo(id)}
+      />
     </div>
   );
 }
